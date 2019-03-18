@@ -19,7 +19,7 @@ public class SendQueue {
             //3、开启连接
             connection.start();
             while (true) {
-                if (flag > 10) {
+                if (flag > 10000) {
                     break;
                 }
                 //4、使用连接对象创建会话（session）对象

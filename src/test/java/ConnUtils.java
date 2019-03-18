@@ -6,7 +6,7 @@ import javax.jms.JMSException;
 
 public class ConnUtils {
 
-    public static final String queue_name = "test_queue_2";
+    public static final String queue_name = "test_queue_4";
 
     public static final String topic_name = "test_topic_1";
 
