@@ -15,11 +15,11 @@ public class SendQueue {
         try {
             int flag = 0;
             //1、获取一个链接
-            Connection connection = ConnUtils.getConnection();
+            Connection connection = ConnUtils.getConnectionNoPwd();
             //3、开启连接
             connection.start();
             while (true) {
-                if (flag > 10000) {
+                if (flag > 500) {
                     break;
                 }
                 //4、使用连接对象创建会话（session）对象
