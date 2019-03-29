@@ -40,18 +40,19 @@ public class PoolRedis {
     //取值：
     public static String getPool(String key) {
         Jedis resource = getJedis();
-        return resource.get(key);
+        String value = resource.get(key);
+        jedisPool.returnResource(resource);
+        return value;
     }
 
     public static void main(String[] args) {
         Long start = System.currentTimeMillis();
         try {
             int count = 0;
-            while (count < 10000) {
+            while (count < 100000) {
                 count++;
                 System.out.println("count:" + count);
-                String key = "pool" + count;
-                setPool(key, "value");
+                setPool("pool" + count, "value");
             }
         } catch (Exception ex) {
             System.out.println(ex);
