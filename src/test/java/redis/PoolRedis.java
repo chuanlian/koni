@@ -4,6 +4,10 @@ import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
 
+
+/**
+ * 通过线程池访问单一redis实例
+ */
 public class PoolRedis {
 
     private static JedisPool jedisPool = null;
@@ -17,7 +21,7 @@ public class PoolRedis {
         poolConfig.setMinIdle(RedisUtils.MIN_IDLE);
         //最大连接数
         poolConfig.setMaxTotal(RedisUtils.MAX_TOTAL);
-        jedisPool = new JedisPool(poolConfig, RedisUtils.HOST, RedisUtils.PORT);
+        jedisPool = new JedisPool(poolConfig, RedisUtils.HOST, RedisUtils.PORT_0);
     }
 
     //获得jedis资源的方法

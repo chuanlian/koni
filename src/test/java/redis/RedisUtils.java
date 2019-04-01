@@ -10,7 +10,12 @@ public class RedisUtils {
     /**
      * port
      */
-    public static final Integer PORT = 6379;
+    public static final Integer PORT_0 = 6379;
+    public static final Integer PORT_1 = 6380;
+    public static final Integer PORT_2 = 6381;
+
+    public static final Integer TIME_OUT = 500;
+
 
     public static final Integer MAX_IDLE = 10;
 
