@@ -69,7 +69,7 @@ public class SharePoolRedis {
         Long start = System.currentTimeMillis();
         try {
             int count = 0;
-            while (count < 100000) {
+            while (count < 500000) {
                 count++;
                 System.out.println("count:" + count);
                 setPool("sharedPool" + count, "value");

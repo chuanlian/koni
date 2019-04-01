@@ -11,7 +11,7 @@ public class SingleInstanceRedis {
         Long start = System.currentTimeMillis();
         try {
             int count = 0;
-            while (count < 100000) {
+            while (count < 10000) {
                 count++;
                 System.out.println("count:" + count);
                 Jedis jedis = getJedis();
@@ -32,7 +32,7 @@ public class SingleInstanceRedis {
     private static Jedis getJedis() {
         Jedis jedis = null;
         try {
-            jedis = new Jedis(RedisUtils.HOST, RedisUtils.PORT_0);
+            jedis = new Jedis("10.94.162.58", 8068);
         } catch (Exception ex) {
             System.out.println("redis init error:" + ex);
         }

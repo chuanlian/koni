@@ -19,7 +19,7 @@ public class RedisUtils {
 
     public static final Integer MAX_IDLE = 10;
 
-    public static final Integer MIN_IDLE = 5;
+    public static final Integer MIN_IDLE = 1;
 
     public static final Integer MAX_TOTAL = 20;
 
