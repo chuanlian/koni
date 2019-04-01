@@ -9,7 +9,7 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * 采用线程池访问redis集群（ShardedJedis 一致性哈希）
+ * redis集群：通过线程池访问
  */
 public class SharePoolRedis {
 
@@ -26,6 +26,8 @@ public class SharePoolRedis {
         poolConfig.setMaxTotal(RedisUtils.MAX_TOTAL);
         // 获取连接最大等待时间
         poolConfig.setMaxWaitMillis(2000);
+        // 验证连接是否有效
+        poolConfig.setTestOnBorrow(true);
 
         JedisShardInfo shardInfo1 = new JedisShardInfo(RedisUtils.HOST, RedisUtils.PORT_0, RedisUtils.TIME_OUT);
         JedisShardInfo shardInfo2 = new JedisShardInfo(RedisUtils.HOST, RedisUtils.PORT_1, RedisUtils.TIME_OUT);
@@ -50,14 +52,16 @@ public class SharePoolRedis {
     public static void setPool(String key, String value) {
         ShardedJedis shardedJedis = getShardedJedis();
         shardedJedis.set(key, value);
-        shardedJedisPool.returnBrokenResource(shardedJedis);
+        // shardedJedisPool.returnBrokenResource(shardedJedis);
+        shardedJedis.close();
     }
 
     //取值：
     public static String getPool(String key) {
         ShardedJedis shardedJedis = getShardedJedis();
         String value = shardedJedis.get(key);
-        shardedJedisPool.returnResource(shardedJedis);
+        // shardedJedisPool.returnResource(shardedJedis);
+        shardedJedis.close();
         return value;
     }
 

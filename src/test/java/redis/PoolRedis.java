@@ -6,7 +6,7 @@ import redis.clients.jedis.JedisPoolConfig;
 
 
 /**
- * 通过线程池访问单一redis实例
+ * 单redis实例：通过线程池访问
  */
 public class PoolRedis {
 
@@ -36,16 +36,16 @@ public class PoolRedis {
 
     //存值：
     public static void setPool(String key, String value) {
-        Jedis resource = getJedis();
-        resource.set(key, value);
-        jedisPool.returnResource(resource);
+        Jedis jedis = getJedis();
+        jedis.set(key, value);
+        jedis.close();
     }
 
     //取值：
     public static String getPool(String key) {
-        Jedis resource = getJedis();
-        String value = resource.get(key);
-        jedisPool.returnResource(resource);
+        Jedis jedis = getJedis();
+        String value = jedis.get(key);
+        jedis.close();
         return value;
     }
 
