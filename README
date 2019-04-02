@@ -1,3 +1,4 @@
+create time 2018/08/20   DEMO
 spring cloud/spring boot 验证小程序
-activeMq 发送和消费DEMO
-2018/08/20
+add 2019/03/20  activeMq 发送和消费DEMO
+add 2019/04/01  jedis DEMO(单实例，多线程单实例，多线程多实例)
