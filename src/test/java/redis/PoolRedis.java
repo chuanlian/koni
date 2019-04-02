@@ -13,7 +13,7 @@ public class PoolRedis {
     private static JedisPool jedisPool = null;
 
     static {
-        //获得池子对象
+        //连接池配置
         JedisPoolConfig poolConfig = new JedisPoolConfig();
         //最大闲置个数
         poolConfig.setMaxIdle(RedisUtils.MAX_IDLE);
