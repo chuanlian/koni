@@ -11,7 +11,7 @@ public class SingleInstanceRedis {
         Long start = System.currentTimeMillis();
         try {
             int count = 0;
-            while (count < 10000) {
+            while (count < 100000) {
                 count++;
                 System.out.println("count:" + count);
                 Jedis jedis = getJedis();
